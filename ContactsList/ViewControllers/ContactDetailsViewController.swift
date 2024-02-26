@@ -8,10 +8,17 @@
 import UIKit
 
 class ContactDetailsViewController: UIViewController {
-
+    
+    @IBOutlet var phoneLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    
+    var person: Person!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        navigationItem.title = person.name
+        phoneLabel.text = person.phone
+        emailLabel.text = person.email
     }
 }
