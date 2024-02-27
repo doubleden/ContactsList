@@ -19,13 +19,20 @@ struct Person {
         let data = DataStore()
         var persons: [Person] = []
         
-        while !data.names.isEmpty {
-            let randomName = "\(data.names.remove(at: Int.random(in:0..<data.names.count)))"
-            let randomSurname = "\(data.surnames.remove(at: Int.random(in: 0..<data.surnames.count)))"
-            let randomPhone = "\(data.phones.remove(at: Int.random(in: 0..<data.phones.count)))"
-            let randomEmails = "\(data.emails.remove(at: Int.random(in: 0..<data.emails.count)))"
-            
-            let person = Person(name: randomName, surname: randomSurname, phone: randomPhone, email: randomEmails)
+        let minDataSize = min(
+            data.names.count,
+            data.surnames.count,
+            data.phones.count,
+            data.emails.count
+        )
+        
+        for _ in 1...minDataSize {
+            let person = Person(
+                name: getRandom(from: &data.names),
+                surname: getRandom(from: &data.surnames),
+                phone: getRandom(from: &data.phones),
+                email: getRandom(from: &data.emails)
+            )
             persons.append(person)
         }
         
@@ -33,4 +40,6 @@ struct Person {
     }
 }
 
-
+private func getRandom(from elements: inout [String]) -> String {
+    elements.remove(at: Int.random(in: 0..<elements.count))
+}
