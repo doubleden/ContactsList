@@ -15,8 +15,8 @@ struct Person {
         "\(name) \(surname)"
     }
     
-    var contacts: [String] {
-        [phone, email]
+    var quantityContacts: Int {
+        [phone, email].count
     }
     
     static func getPersons() -> [Person] {
