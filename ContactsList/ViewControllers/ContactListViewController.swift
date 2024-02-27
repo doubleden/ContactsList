@@ -32,7 +32,7 @@ extension ContactListViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: "contactCell",
+            withIdentifier: "personCell",
             for: indexPath
         )
         

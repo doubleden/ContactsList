@@ -15,9 +15,12 @@ class OpenContactListViewController: UITableViewController {
         super.viewDidLoad()
         tableView.allowsSelection = false
     }
+}
 
-    // MARK: - Table view data source
 
+// MARK: - UITableViewDataSource
+extension OpenContactListViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         persons.count
     }
@@ -31,7 +34,7 @@ class OpenContactListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactsCell", for: indexPath)
         
         let person = persons[indexPath.section]
         var content = cell.defaultContentConfiguration()
