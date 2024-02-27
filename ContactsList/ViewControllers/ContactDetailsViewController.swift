@@ -18,7 +18,14 @@ final class ContactDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = person.fullName
-        phoneLabel.text = person.phone
-        emailLabel.text = person.email
+        
+        for contact in person.contacts {
+            switch contact {
+            case .phone(let number):
+                phoneLabel.text = number
+            case .email(let email):
+                emailLabel.text = email
+            }
+        }
     }
 }

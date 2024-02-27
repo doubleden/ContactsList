@@ -4,37 +4,45 @@
 //
 //  Created by Denis Denisov on 26/2/24.
 //
+let data = DataStore()
 
 struct Person {
     let name: String
     let surname: String
-    let phone: String
-    let email: String
+    let contacts: [PersonContact]
     
     var fullName: String {
         "\(name) \(surname)"
     }
     
-    var quantityContacts: Int {
-        [phone, email].count
-    }
-    
     static func getPersons() -> [Person] {
-        let data = DataStore()
         var persons: [Person] = []
         
         for _ in 1...20 {
             let person = Person(
                 name: getRandom(from: &data.names),
                 surname: getRandom(from: &data.surnames),
-                phone: getRandom(from: &data.phones),
-                email: getRandom(from: &data.emails)
+                contacts: getContacts()
             )
             persons.append(person)
         }
         
         return persons
     }
+}
+
+enum PersonContact {
+    case phone(String)
+    case email(String)
+}
+
+private func getContacts() -> [PersonContact] {
+    var personContacts: [PersonContact] = []
+    
+    personContacts.append(.phone(getRandom(from: &data.phones)))
+    personContacts.append(.email(getRandom(from: &data.emails)))
+    
+    return personContacts
 }
 
 private func getRandom(from elements: inout [String]) -> String {

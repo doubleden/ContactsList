@@ -26,7 +26,7 @@ extension OpenContactListViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        persons[section].quantityContacts
+        persons[section].contacts.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -39,7 +39,13 @@ extension OpenContactListViewController {
         let person = persons[indexPath.section]
         var content = cell.defaultContentConfiguration()
 
-        content.text = indexPath.row == 0 ? person.phone : person.email
+        let contact = person.contacts[indexPath.row]
+           switch contact {
+           case .phone(let number):
+               content.text = number
+           case .email(let email):
+               content.text = email
+           }
         
         cell.contentConfiguration = content
         return cell
