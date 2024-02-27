@@ -31,24 +31,14 @@ class OpenContactListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let person = persons[indexPath.section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath)
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "phoneCell", for: indexPath)
-            var content = cell.defaultContentConfiguration()
-            
-            content.text = person.phone
-            
-            cell.contentConfiguration = content
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "emailCell", for: indexPath)
-            var content = cell.defaultContentConfiguration()
-            
-            content.text = person.email
-            
-            cell.contentConfiguration = content
-            return cell
-        }
+        let person = persons[indexPath.section]
+        var content = cell.defaultContentConfiguration()
+        
+        content.text = indexPath.row == 0 ? person.phone : person.email
+        
+        cell.contentConfiguration = content
+        return cell
     }
 }

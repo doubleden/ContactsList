@@ -19,14 +19,7 @@ struct Person {
         let data = DataStore()
         var persons: [Person] = []
         
-        let minDataSize = min(
-            data.names.count,
-            data.surnames.count,
-            data.phones.count,
-            data.emails.count
-        )
-        
-        for _ in 1...minDataSize {
+        for _ in 1...20 {
             let person = Person(
                 name: getRandom(from: &data.names),
                 surname: getRandom(from: &data.surnames),
