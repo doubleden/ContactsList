@@ -15,6 +15,10 @@ struct Person {
         "\(name) \(surname)"
     }
     
+    var contacts: [String] {
+        [phone, email]
+    }
+    
     static func getPersons() -> [Person] {
         let data = DataStore()
         var persons: [Person] = []
