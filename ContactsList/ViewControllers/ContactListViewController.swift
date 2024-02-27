@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ContactsListTableViewController: UITableViewController {
+class ContactListViewController: UITableViewController {
     
-    private let persons = Person.getPersons()
+    var persons: [Person]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ContactsListTableViewController: UITableViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension ContactsListTableViewController {
+extension ContactListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         persons.count
     }
