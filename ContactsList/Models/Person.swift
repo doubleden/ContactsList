@@ -9,7 +9,7 @@ let data = DataStore()
 struct Person {
     let name: String
     let surname: String
-    let contacts: [PersonContact]
+    let contacts: [ContactType]
     
     var fullName: String {
         "\(name) \(surname)"
@@ -31,13 +31,13 @@ struct Person {
     }
 }
 
-enum PersonContact {
+enum ContactType {
     case phone(String)
     case email(String)
 }
 
-private func getContacts() -> [PersonContact] {
-    var personContacts: [PersonContact] = []
+private func getContacts() -> [ContactType] {
+    var personContacts: [ContactType] = []
     
     personContacts.append(.phone(getRandom(from: &data.phones)))
     personContacts.append(.email(getRandom(from: &data.emails)))
