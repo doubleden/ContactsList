@@ -13,7 +13,6 @@ final class ContactListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 45
     }
     
     // MARK: - Navigation
