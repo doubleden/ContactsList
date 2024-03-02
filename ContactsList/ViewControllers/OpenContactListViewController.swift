@@ -24,14 +24,15 @@ extension OpenContactListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         persons.count
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        persons[section].contacts.count
-    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "\(persons[section].fullName)"
     }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactsCell", for: indexPath)
@@ -39,13 +40,7 @@ extension OpenContactListViewController {
         let person = persons[indexPath.section]
         var content = cell.defaultContentConfiguration()
 
-        let contact = person.contacts[indexPath.row]
-           switch contact {
-           case .phone(let number):
-               content.text = number
-           case .email(let email):
-               content.text = email
-           }
+        content.text = indexPath.row == 0 ? person.phone : person.email
         
         cell.contentConfiguration = content
         return cell
