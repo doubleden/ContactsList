@@ -5,8 +5,8 @@
 //  Created by Denis Denisov on 26/2/24.
 //
 
-class DataStore {
-    var names = [
+final class DataStore {
+    let names = [
         "Alex",
         "Jordan",
         "Casey",
@@ -28,7 +28,7 @@ class DataStore {
         "Charlie",
         "Finley"
     ]
-    var surnames = [
+    let surnames = [
         "Smith",
         "Johnson",
         "Williams",
@@ -50,7 +50,7 @@ class DataStore {
         "Jackson",
         "Martin"
     ]
-    var phones = [
+    let phones = [
         "+1 202-555-0147",
         "+1 202-555-0184",
         "+1 202-555-0168",
@@ -72,7 +72,7 @@ class DataStore {
         "+1 202-555-0132",
         "+1 202-555-0185"
     ]
-    var emails = [
+    let emails = [
         "user01@example.com",
         "user02@example.com",
         "user03@example.com",
