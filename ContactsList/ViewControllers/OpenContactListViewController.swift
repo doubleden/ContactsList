@@ -35,7 +35,7 @@ extension OpenContactListViewController {
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let person = persons[indexPath.section]
         var content = cell.defaultContentConfiguration()
@@ -43,5 +43,18 @@ extension OpenContactListViewController {
         
         cell.contentConfiguration = content
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension OpenContactListViewController {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactsCell")
+        let contactCell = cell as? HeaderCellView
+        let person = persons[section]
+        
+        contactCell?.fullnameLabel.text = person.fullName
+        
+        return contactCell
     }
 }
